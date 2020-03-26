@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+    <h1 id="mud-api">MUD API</h1>
+    <p>API для для маленького MUD (Multi-user dungeon) без регистрация пользователей.</p>
+    <h2 id="-">Примеры использования</h2>
+    <p>Доступны следующие вызовы http:</p>
+    <ul>
+        <li>
+            получать список комнат<br>
+            GET-запрос<br>
+            <a href="{% url 'get_rooms_names' %}">/api/rooms/</a>
+
+        </li>
+        <li>
+            получать список персонажей<br>
+            GET-запрос<br>
+            <a href="{% url 'get_all_character_names' %}">/api/characters/</a>
+
+        </li>
+        <li>
+            получать описание комнаты<br>
+            GET-запрос<br>
+            <a href="{% url 'get_single_room_description' '1' %}">/api/rooms/id комнаты/description</a>
+        </li>
+        <li>
+            получать список персонажей в комнате<br>
+            GET-запрос<br>
+            <a href="{% url 'get_chars_in_room' '1' %}">/api/rooms/id комнаты/chars</a>
+        </li>
+        <li>
+            получать список предметов в комнате<br>
+            GET-запрос<br>
+            <a href="{% url 'get_items_in_room' '1' %}">/api/rooms/id комнаты/items</a>
+        </li>
+        <li>
+            переводить персонажа из комнаты в комнату<br>
+            PUT-запрос<br>
+            <a href="{% url 'update_characters_room' '1' %}">/characters/id персонажа/room</a><br>
+            Пример тела запроса:<br>
+            {
+                &#39;room&#39;: 1
+            }
+        </li>
+        <li>
+            подбирать персонажем предметы из комнаты в инвентарь<br>
+            PUT-запрос<br>
+            <a href="{% url 'take_item' '1' %}">/characters/id персонажа/take_item</a><br>
+            Пример тела запроса:<br>
+            {
+                &quot;items&quot;: [1,2]
+            }
+        </li>
+        <li>
+            выкладывать предметы из инвентаря персонажа в комнату<br>
+            PUT-запрос<br>
+            <a href="{% url 'put_out_item' '1' %}">/characters/id персонажа/put_out_item</a><br>
+            Пример тела запроса:<br>
+            {
+                &quot;items&quot;: [1,2]
+            }
+        </li>
+    </ul>
+
+</body>
+</html>
